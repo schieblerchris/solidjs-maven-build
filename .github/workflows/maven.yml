@@ -44,10 +44,10 @@ jobs:
       with:
         name: dist
         path: target/dist
-    - run: ls -lR
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: cschiebler/solidjs-maven-build:latest
 
