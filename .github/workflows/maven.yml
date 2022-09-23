@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -24,11 +22,14 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Archive production artifacts
+    - name: Archive artifacts
       uses: actions/upload-artifact@v3
       with:
         name: dist
         path: target/dist
+  package:
+    runs-on: ubuntu-latest
+    steps:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
@@ -38,6 +39,11 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Retrieve artifacts
+      uses: actions/download-artifact@master
+      with:
+        name: dist
+        path: target/dist
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
