@@ -37,3 +37,4 @@ docker run -p 3000:80 solidjs-maven-build:latest
 * [Maven](https://maven.apache.org/download.cgi)
 * [Frontend Maven Plugin](https://github.com/eirslett/frontend-maven-plugin)
 * [NodeJS](https://nodejs.org/en/)
+* [Docker](https://www.docker.com/products/docker-desktop/)

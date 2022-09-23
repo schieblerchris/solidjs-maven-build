@@ -21,6 +21,7 @@ maven:
 
 container:
   stage: build
+  needs: [maven]
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [ "" ]
