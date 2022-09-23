@@ -1,6 +1,6 @@
 # SolidJS Maven Build
 
-
+docker run -p 3000:80 cs-core.de:5050/playground/solidjs-maven-build:latest
 
 ## Getting started
 
